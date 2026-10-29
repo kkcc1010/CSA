@@ -1,3 +1,4 @@
+; cd FLAB3_asm
 ; nasm -f elf32 FLAB3.asm -o FLAB3.o
 ; ld -m elf_i386 FLAB3.o -o FLAB3
 ; ./FLAB3
@@ -230,7 +231,6 @@ labs_done:
     xor ebx, ebx
     int 0x80
 
-; Reads a line into EDI, using ESI as the maximum buffer size.
 read_line:
     mov eax, 3
     xor ebx, ebx
@@ -256,15 +256,12 @@ read_line:
     mov byte [edi], 0
     ret
 
-; Calculates tuition from EAX units and EBX lab courses.
-; The unit rate is 1000 PHP and the laboratory rate is 600 PHP.
 calculate_tuition:
     imul eax, 1000
     imul ebx, 600
     add eax, ebx
     ret
 
-; Converts lowercase ASCII letters in the string at ESI to uppercase.
 uppercase:
 .next:
     mov al, [esi]
@@ -281,8 +278,6 @@ uppercase:
 .done:
     ret
 
-; Parses a non-empty unsigned decimal string at ESI.
-; Returns the value in EAX and sets CF when an invalid character is found.
 parse_uint:
     xor eax, eax
     xor ecx, ecx
@@ -313,7 +308,6 @@ parse_uint:
     stc
     ret
 
-; Prints the null-terminated string whose address is in ESI.
 print_z:
     mov edi, esi
     xor edx, edx
